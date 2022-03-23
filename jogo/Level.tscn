@@ -1,0 +1,376 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Level.gd" type="Script" id=3]
+[ext_resource path="res://Console.gd" type="Script" id=4]
+[ext_resource path="res://Input.gd" type="Script" id=5]
+[ext_resource path="res://fonts/EightBitDragon-anqx.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Area2D.gd" type="Script" id=7]
+[ext_resource path="res://AreaPorta.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.5778, 31 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 18.4889, 23 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.5, 175.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 179.75, 31 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 25.625, 23 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0823529, 0.0784314, 0.0784314, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.235294, 0.219608, 0.219608, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.427451, 0.380392, 0.380392, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1022.0
+margin_bottom = 599.0
+color = Color( 0.388235, 0.341176, 0.341176, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Caixa" type="Node" parent="."]
+
+[node name="porta" type="Sprite" parent="Caixa"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 466, 194 )
+scale = Vector2( 5.625, 1 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Caixa/porta"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa/porta/StaticBody2D"]
+position = Vector2( 0.0666656, 0 )
+shape = SubResource( 1 )
+
+[node name="AreaPorta" type="Area2D" parent="Caixa/porta"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa/porta/AreaPorta"]
+position = Vector2( -0.355545, 1 )
+shape = SubResource( 4 )
+
+[node name="Icon" type="Sprite" parent="Caixa"]
+modulate = Color( 0.192157, 0.168627, 0.168627, 1 )
+position = Vector2( 468.5, 481 )
+scale = Vector2( 5.60938, 1 )
+texture = ExtResource( 2 )
+
+[node name="Icon2" type="Sprite" parent="Caixa"]
+modulate = Color( 0.192157, 0.168627, 0.168627, 1 )
+position = Vector2( 317, 336 )
+scale = Vector2( 1, 5.4375 )
+texture = ExtResource( 2 )
+
+[node name="Icon3" type="Sprite" parent="Caixa"]
+modulate = Color( 0.192157, 0.168627, 0.168627, 1 )
+position = Vector2( 617, 336.5 )
+scale = Vector2( 1, 5.45313 )
+texture = ExtResource( 2 )
+
+[node name="Colisao" type="Node" parent="Caixa"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Caixa/Colisao"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa/Colisao/StaticBody2D"]
+position = Vector2( 316.5, 338.5 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Caixa/Colisao"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa/Colisao/StaticBody2D2"]
+position = Vector2( 466.25, 481 )
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Caixa/Colisao/StaticBody2D2"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Caixa/Colisao/StaticBody2D2/StaticBody2D"]
+position = Vector2( 617, 339 )
+shape = SubResource( 2 )
+
+[node name="Dica" type="CanvasLayer" parent="."]
+
+[node name="Lógica" type="ColorRect" parent="Dica"]
+margin_left = 27.0
+margin_top = 161.0
+margin_right = 264.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, -34 )
+color = Color( 0.207843, 0.207843, 0.196078, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Green" type="ColorRect" parent="Dica/Lógica"]
+margin_left = 29.0
+margin_top = 31.0
+margin_right = 69.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 32, 31 )
+color = Color( 0, 1, 0, 1 )
+
+[node name="Label" type="Label" parent="Dica/Lógica/Green"]
+margin_left = 52.0
+margin_right = 151.0
+margin_bottom = 31.0
+text = "ABRE
+RGB= (0,1,0)"
+align = 1
+
+[node name="Red" type="ColorRect" parent="Dica/Lógica"]
+margin_left = 29.0
+margin_top = 95.0
+margin_right = 69.0
+margin_bottom = 135.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Dica/Lógica/Red"]
+margin_left = 53.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 33.0
+text = "FECHA
+RGB= (1,0,0)"
+align = 1
+
+[node name="Yellow" type="ColorRect" parent="Dica/Lógica"]
+margin_left = 29.0
+margin_top = 159.0
+margin_right = 69.0
+margin_bottom = 199.0
+rect_pivot_offset = Vector2( 32, 31 )
+color = Color( 1, 1, 0, 1 )
+
+[node name="Label" type="Label" parent="Dica/Lógica/Yellow"]
+margin_left = 53.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 33.0
+text = "VITÓRIA
+RGB= (1,1,0)
+"
+align = 1
+valign = 1
+
+[node name="Tab" type="Panel" parent="Dica/Lógica"]
+margin_left = 29.0
+margin_top = 223.0
+margin_right = 69.0
+margin_bottom = 263.0
+
+[node name="Label" type="Label" parent="Dica/Lógica/Tab"]
+margin_left = 53.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 33.0
+text = "ABRE/FECHA
+CONSOLE"
+align = 1
+valign = 1
+
+[node name="Tab" type="Label" parent="Dica/Lógica/Tab"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 9 )
+text = "TAB"
+align = 1
+valign = 1
+
+[node name="Enter" type="Panel" parent="Dica/Lógica"]
+margin_left = 29.0
+margin_top = 287.0
+margin_right = 69.0
+margin_bottom = 327.0
+
+[node name="Label" type="Label" parent="Dica/Lógica/Enter"]
+margin_left = 53.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 33.0
+text = "ABRE/FECHA
+CONSOLE"
+align = 1
+valign = 1
+
+[node name="Tab" type="Label" parent="Dica/Lógica/Enter"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "ENTER"
+align = 1
+valign = 1
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 424, 304 )
+collision_mask = 2
+
+[node name="Yellow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 849, 63 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Yellow"]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow/Area2D"]
+position = Vector2( -1, 1 )
+shape = SubResource( 11 )
+
+[node name="Verde" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 16.0
+margin_right = 184.0
+margin_bottom = 56.0
+text = "Verde"
+
+[node name="Vermelho" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 184.0
+margin_bottom = 104.0
+text = "Vermelho"
+
+[node name="Amarelo" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 112.0
+margin_right = 184.0
+margin_bottom = 152.0
+text = "Amarelo"
+
+[node name="Console" type="PanelContainer" parent="."]
+margin_left = 697.0
+margin_top = 140.0
+margin_right = 992.0
+margin_bottom = 526.0
+custom_styles/panel = SubResource( 8 )
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Console"]
+margin_right = 295.0
+margin_bottom = 386.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="Console/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 275.0
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 32 )
+custom_styles/panel = SubResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Console/MarginContainer/PanelContainer"]
+margin_right = 255.0
+margin_bottom = 346.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="PanelContainer3" type="PanelContainer" parent="Console/MarginContainer/PanelContainer/VBoxContainer"]
+margin_right = 255.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Console/MarginContainer/PanelContainer/VBoxContainer/PanelContainer3"]
+margin_right = 255.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+text = "
+.gate{"
+
+[node name="InputArea" type="PanelContainer" parent="Console/MarginContainer/PanelContainer/VBoxContainer"]
+margin_left = 18.0
+margin_top = 44.0
+margin_right = 255.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 237, 20 )
+size_flags_horizontal = 14
+custom_styles/panel = SubResource( 6 )
+
+[node name="Input" type="LineEdit" parent="Console/MarginContainer/PanelContainer/VBoxContainer/InputArea"]
+margin_right = 237.0
+margin_bottom = 20.0
+custom_styles/normal = SubResource( 7 )
+max_length = 30
+script = ExtResource( 5 )
+
+[node name="PanelContainer2" type="PanelContainer" parent="Console/MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 255.0
+margin_bottom = 322.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="Label" type="Label" parent="Console/MarginContainer/PanelContainer/VBoxContainer/PanelContainer2"]
+margin_right = 255.0
+margin_bottom = 254.0
+size_flags_vertical = 5
+text = "}
+
+.wall{
+  color: 0.0.0;
+}
+
+.exit {
+  color: 1.1.0;
+}"
+
+[node name="Button" type="Button" parent="Console/MarginContainer/PanelContainer/VBoxContainer"]
+margin_top = 326.0
+margin_right = 255.0
+margin_bottom = 346.0
+text = "Rodar"
+
+[connection signal="body_entered" from="Caixa/porta/AreaPorta" to="Caixa/porta/AreaPorta" method="_on_AreaPorta_body_entered"]
+[connection signal="body_entered" from="Yellow/Area2D" to="Yellow/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="Verde" to="." method="_on_Verde_pressed"]
+[connection signal="pressed" from="Vermelho" to="." method="_on_Vermelho_pressed"]
+[connection signal="pressed" from="Amarelo" to="." method="_on_Amarelo_pressed"]
+[connection signal="pressed" from="Amarelo" to="Caixa/porta/AreaPorta" method="_on_Amarelo_pressed"]
+[connection signal="text_entered" from="Console/MarginContainer/PanelContainer/VBoxContainer/InputArea/Input" to="Console/MarginContainer/PanelContainer/VBoxContainer/InputArea/Input" method="_on_Input_text_entered"]
+[connection signal="pressed" from="Console/MarginContainer/PanelContainer/VBoxContainer/Button" to="Console" method="_on_Button_pressed"]
